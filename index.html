@@ -15,23 +15,8 @@
         padding: 0;
       }
 
-      .gm-style-iw-c {
-        padding: 0 !important;
-      }
-
-      .gm-style-iw-d {
-        overflow: hidden !important;
-      }
-
       .gm-style-iw-d div div {
-        border: 5px solid #a4b7ae;
-        background: #b8d3cb66;
-        color: #1f3139;
-        border-radius: 8px;
-        padding: 20px;
-        margin: 0 auto;
-        font-variant: small-caps;
-        font-size: xx-large;
+        font-size: medium;
       }
     </style>
   </head>
@@ -54,9 +39,12 @@
 
       async function initMap() {
         const map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 15,
-          center: { lat: 33.98320699, lng: -118.30361653 },
+          zoom: 19,
+          center: { lat: 33.983206, lng: -118.303616 },
           mapId: "edf8680b64c1f9dc",
+          isFractionalZoomEnabled: true,
+          heading: 320,
+          tilt: 47.5,
         });
 
         const { AdvancedMarkerElement } = await google.maps.importLibrary(
@@ -94,9 +82,7 @@
 
         map.data.addListener("click", function (event) {
           const feat = event.feature;
-          const html = `<div style='border: 2px solid green;'>Site ID: ${feat.getProperty(
-            "site_id"
-          )}
+          const html = `<div>Site ID: ${feat.getProperty("site_id")}
             <br>Common name: 
             ${feat.getProperty("spp_com")}
             <br>Botanical name: 
